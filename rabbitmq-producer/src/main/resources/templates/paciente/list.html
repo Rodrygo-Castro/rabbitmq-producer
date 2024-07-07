@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pacientes</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .footer {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 5px 5px;
+            align-self: flex-end;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav th:replace="~{paciente/fragments/menu :: menu}" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"></nav>
+
+<div class="container mt-4">
+    <h2>Lista de Pacientes</h2>
+    <hr>
+    <div>
+        <a class="btn btn-primary" th:href="@{/pacientes/novo}">Novo Paciente</a>
+    </div>
+    <hr>
+    <!--/*@thymesVar id="feedback" type=""*/-->
+    <div th:if="${!#strings.isEmpty(feedback)}" class="alert alert-success" role="alert">
+        <span th:text="${feedback}"></span>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome Completo</th>
+                <th>Sexo</th>
+                <th>CPF</th>
+                <th>Data de Nascimento</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Verifica se a lista de pacientes não está vazia -->
+            <th:block th:if="${not #lists.isEmpty(pacienteModel)}">
+                <tr th:each="paciente : ${pacienteModel}">
+                    <td th:text="${paciente.id}"></td>
+                    <td th:text="${paciente.nomeCompleto}"></td>
+                    <td th:text="${paciente.sexo}"></td>
+                    <td th:text="${paciente.cpf}"></td>
+                    <td th:text="${paciente.dataNascimento}"></td>
+                    <td>
+                        <a th:href="@{/pacientes/edit/{id}(id=${paciente.id})}" class="btn btn-warning btn-sm">Editar</a>
+                        <a th:href="@{/pacientes/gerarPdf/{id}(id=${paciente.id})}" class="btn btn-info btn-sm" target="_blank">Visualizar</a>
+                    </td>
+                </tr>
+            </th:block>
+            <!-- Se a lista de pacientes estiver vazia -->
+            <th:block th:unless="${not #lists.isEmpty(pacienteModel)}">
+                <tr>
+                    <td colspan="6" class="text-center">Nenhum paciente encontrado</td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{paciente/fragments/footer :: footer}" class="footer">© 2024 Minha Aplicação. Todos os direitos reservados.</div>
+
+<!-- Incluindo jQuery e Bootstrap JS (no final do body para melhor performance) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

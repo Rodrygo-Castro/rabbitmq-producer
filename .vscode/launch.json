@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-RabbitmqProducerApplication<rabbitmq-producer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.rodrigo.rabbitmq_producer.RabbitmqProducerApplication",
+            "projectName": "rabbitmq-producer",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

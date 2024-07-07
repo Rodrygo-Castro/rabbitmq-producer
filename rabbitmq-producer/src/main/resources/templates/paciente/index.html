@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela Inicial</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Seu CSS personalizado -->
+  <style>
+    /* Estilos personalizados aqui */
+    body {
+      padding-bottom: 70px;
+      /* Altura do rodapé */
+    }
+
+    .navbar {
+      background-color: #007bff !important;
+      /* Cor de fundo do menu */
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #007bff;
+      /* Cor de fundo do rodapé */
+      color: #ffffff;
+      /* Cor do texto do rodapé */
+      text-align: center;
+      padding: 5px 0;
+      /* Reduza o espaçamento interno do rodapé */
+      display: flex;
+      justify-content: center;
+      /* Centralizar horizontalmente */
+      align-items: center;
+      /* Centralizar verticalmente */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav th:replace="~{paciente/fragments/menu :: menu}" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  </nav>
+
+  <!-- Conteúdo da página -->
+  <div class="container mt-5">
+    <br>
+    <h2 class="text-center">Bem-vindo à Minha Aplicação</h2>
+    <p class="text-center">Esta é a página inicial da aplicação.</p>
+  </div>
+
+  <!-- Footer -->
+  <div th:replace="~{paciente/fragments/footer :: footer}" class="footer">© 2024 Minha Aplicação. Todos os direitos
+    reservados.</div>
+
+  <!-- Bootstrap JS (opcional, se necessário) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
